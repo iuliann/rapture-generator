@@ -20,18 +20,24 @@ composer install iuliann/rapture-generator
 
 ```php
 $class = new PhpClass('Test');
-        $class->setNamespace('Demo')
-            ->setIsAbstract(true)
-            ->setIsFinal(true)
-            ->setExtends('\Rapture\Component\Definition\ClassAbstract')
-            ->addImplements('\Rapture\Component\Definition\ClassInterface')
-            ->addTrait('\Rapture\Component\Definition\ClassTrait')
-            ->addConstant('status_on', 1)
-            ->addConstant('status_off', 2)
-            ->addProperty(new PhpProperty('status', 'self::STATUS_OFF', PhpMethod::KEYWORD_PROTECTED))
-            ->addMethod(new PhpMethod('setStatus', '$this->status = $status;', PhpMethod::KEYWORD_PUBLIC, [['status', 'int', 'self::STATUS_OFF']]))
-            ->setComment(new PhpComment(['Class Demo', '', '@see HelloWorld']))
-        ;
+$class->setNamespace('Demo')
+    ->setIsAbstract(true)
+    ->setIsFinal(true)
+    ->setExtends('\Rapture\Component\Definition\ClassAbstract')
+    ->addImplements('\Rapture\Component\Definition\ClassInterface')
+    ->addTrait('\Rapture\Component\Definition\ClassTrait')
+    ->addConstant('status_on', 1)
+    ->addConstant('status_off', 2)
+    ->addProperty(new PhpProperty('status', 'self::STATUS_OFF', PhpMethod::KEYWORD_PROTECTED))
+    ->addMethod(
+        new PhpMethod(
+            'setStatus',
+            '$this->status = $status;' . "\n" . "\n" . 'return $this;',
+            PhpMethod::KEYWORD_PUBLIC,
+            [['status', 'int', 'self::STATUS_OFF']]
+        )
+    )
+    ->setComment(new PhpComment(['Class Demo', '', '@see HelloWorld']));
 
 file_put_contents('User.php', PhpRender::renderClass($class));
 ```
