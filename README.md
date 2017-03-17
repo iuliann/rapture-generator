@@ -3,7 +3,7 @@
 [![PhpVersion](https://img.shields.io/badge/php-7.0-orange.svg?style=flat-square)](#)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](#)
 
-Message sending for various services.
+PHP code generator.
 
 ## Requirements
 
