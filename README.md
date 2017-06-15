@@ -13,7 +13,7 @@ PHP code generator.
 ## Install
 
 ```
-composer install iuliann/rapture-generator
+composer require iuliann/rapture-generator
 ```
 
 ## Quick start
